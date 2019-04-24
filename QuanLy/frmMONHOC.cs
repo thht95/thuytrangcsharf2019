@@ -86,7 +86,7 @@ namespace QuanLy
 				cmd.Parameters.AddWithValue("@tenmon", txtTenMH.Text);
 				DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "THÔNG BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 				if (dr == DialogResult.Yes)
-				{
+				{  
 					cmd.ExecuteNonQuery();
 					frmMONHOC_Load(sender, e);
 				}
