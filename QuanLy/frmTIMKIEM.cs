@@ -40,7 +40,7 @@ namespace QuanLy
 			string sql;
 			if (String.IsNullOrEmpty(txtHocsinh.Text) && String.IsNullOrEmpty(txtLophoc.Text) )
 			{
-				MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "YÊU CẦU", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "YÊU CẦU", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 
