@@ -104,42 +104,67 @@ namespace QuanLy
 			}
 		}
 
+        private bool check()
+        {
+            if (string.IsNullOrEmpty(txtDiem.Text))
+                return false;
+
+            int parse;
+
+            if (!int.TryParse(txtDiem.Text, out parse))
+            {
+                MessageBox.Show("Điểm phải là số");
+                return false;
+            }
+
+            if (int.Parse(txtDiem.Text) < 0 || int.Parse(txtDiem.Text) > 10)
+            {
+                MessageBox.Show("Điểm phải từ 0 đến 10");
+                return false;
+            }
+
+            return true;
+        }
+
 		private void btnLuu_Click(object sender, EventArgs e)
 		{
-			if (flag == 0)
-			{
-				if (String.IsNullOrEmpty(cboTenhocsinh.Text) || String.IsNullOrEmpty(cboMonhoc.Text) || String.IsNullOrEmpty(cboLoaidiem.Text))
-					MessageBox.Show("Bạn cần nhập đầy đủ thông tin", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				else
-				{
-					con.connection();
-					SqlCommand cmd = con.cnn.CreateCommand();
-					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.CommandText = "Insert_ND";
-					cmd.Parameters.AddWithValue("@madiem", txtMadiem.Text);
-					
-					cmd.Parameters.AddWithValue("@mahs", cboTenhocsinh.SelectedValue);
-					cmd.Parameters.AddWithValue("@mamon", cboMonhoc.SelectedValue);
-					cmd.Parameters.AddWithValue("@maloai", cboLoaidiem.SelectedValue);
-					cmd.Parameters.AddWithValue("@diem", txtDiem.Text);
-					cmd.ExecuteNonQuery();
-					frmNHAPDIEM_Load(sender, e);
-				}
-			}
-			else
-			{
-				con.connection();
-				SqlCommand cmd = con.cnn.CreateCommand();
-				cmd.CommandType = CommandType.StoredProcedure;
-				cmd.CommandText = "Update_ND";
-				cmd.Parameters.AddWithValue("@madiem", txtMadiem.Text);
-				cmd.Parameters.AddWithValue("@mahs", cboTenhocsinh.SelectedValue);
-				cmd.Parameters.AddWithValue("@mamon", cboMonhoc.SelectedValue);
-				cmd.Parameters.AddWithValue("@maloai", cboLoaidiem.SelectedValue);
-				cmd.Parameters.AddWithValue("@diem", txtDiem.Text);
-				cmd.ExecuteNonQuery();
-				frmNHAPDIEM_Load(sender, e);
-			}
+            if (check())
+            {
+                if (flag == 0)
+                {
+                    if (String.IsNullOrEmpty(cboTenhocsinh.Text) || String.IsNullOrEmpty(cboMonhoc.Text) || String.IsNullOrEmpty(cboLoaidiem.Text))
+                        MessageBox.Show("Bạn cần nhập đầy đủ thông tin", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                    {
+                        con.connection();
+                        SqlCommand cmd = con.cnn.CreateCommand();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "Insert_ND";
+                        cmd.Parameters.AddWithValue("@madiem", txtMadiem.Text);
+
+                        cmd.Parameters.AddWithValue("@mahs", cboTenhocsinh.SelectedValue);
+                        cmd.Parameters.AddWithValue("@mamon", cboMonhoc.SelectedValue);
+                        cmd.Parameters.AddWithValue("@maloai", cboLoaidiem.SelectedValue);
+                        cmd.Parameters.AddWithValue("@diem", txtDiem.Text);
+                        cmd.ExecuteNonQuery();
+                        frmNHAPDIEM_Load(sender, e);
+                    }
+                }
+                else
+                {
+                    con.connection();
+                    SqlCommand cmd = con.cnn.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "Update_ND";
+                    cmd.Parameters.AddWithValue("@madiem", txtMadiem.Text);
+                    cmd.Parameters.AddWithValue("@mahs", cboTenhocsinh.SelectedValue);
+                    cmd.Parameters.AddWithValue("@mamon", cboMonhoc.SelectedValue);
+                    cmd.Parameters.AddWithValue("@maloai", cboLoaidiem.SelectedValue);
+                    cmd.Parameters.AddWithValue("@diem", txtDiem.Text);
+                    cmd.ExecuteNonQuery();
+                    frmNHAPDIEM_Load(sender, e);
+                }
+            }
 		}
 
 		private void btnThoat_Click(object sender, EventArgs e)
