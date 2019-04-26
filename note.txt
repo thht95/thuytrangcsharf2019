@@ -9,3 +9,11 @@ gõ
 git pull origin master
 
 0973552857
+
+ALTER proc [dbo].[select_ND]
+as
+select [MaDiem],[Tenhocsinh],[TenMH],[Tenloai],[Heso] as [Hệ số],[Diem] from [dbo].[NHAPDIEM] 
+inner join [dbo].[HOCSINH] on [dbo].[HOCSINH].Mahocsinh=[dbo].[NHAPDIEM].Mahocsinh
+inner join  [dbo].[MONHOC] on [dbo].[MONHOC].MaMH=[dbo].[NHAPDIEM].Mamonhoc
+inner join [dbo].[LOAIDIEM] on [dbo].[LOAIDIEM].Maloaidiem=[dbo].[NHAPDIEM].Maloaidiem
+
