@@ -96,7 +96,7 @@ namespace QuanLy
 
 		private void btnSua_Click(object sender, EventArgs e)
 		{
-			flag = 1;
+			flag = 1; 
 			dis_end(true);
 		}
 

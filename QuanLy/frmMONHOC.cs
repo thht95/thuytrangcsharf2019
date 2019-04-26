@@ -84,9 +84,9 @@ namespace QuanLy
 				cmd.CommandType = CommandType.StoredProcedure;
 				cmd.CommandText = "delete_MH";
 				cmd.Parameters.AddWithValue("@tenmon", txtTenMH.Text);
-				DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "THÔNG BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+				DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "THÔNG BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 				if (dr == DialogResult.Yes)
-				{
+				{  
 					cmd.ExecuteNonQuery();
 					frmMONHOC_Load(sender, e);
 				}

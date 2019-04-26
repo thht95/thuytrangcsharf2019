@@ -244,7 +244,7 @@
 			// 
 			// txtTenhocsinh
 			// 
-			this.txtTenhocsinh.Location = new System.Drawing.Point(92, 44);
+			this.txtTenhocsinh.Location = new System.Drawing.Point(92, 45);
 			this.txtTenhocsinh.Name = "txtTenhocsinh";
 			this.txtTenhocsinh.Size = new System.Drawing.Size(135, 20);
 			this.txtTenhocsinh.TabIndex = 59;
